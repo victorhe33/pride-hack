@@ -3,8 +3,8 @@ import styles from './page.module.css'
 
 
 export default async function Home() {
-  const defaultRestroomsData = await getDefaultRestroomsData();
-  console.log(defaultRestroomsData);
+  const data = await getDefaultRestroomData()
+  console.log("insidepage:",data);
 
   return (
     <main className={styles.main}>
@@ -14,13 +14,13 @@ export default async function Home() {
   )
 }
 
-async function getDefaultRestroomsData() {
-  const res = await fetch('https://www.refugerestrooms.org/api/v1/restrooms?page=1&per_page=10&offset=0');
-  
-  if(!res.ok) {
-    throw new Error('Failed to fetch defaultRestroomsData')
+async function getDefaultRestroomData() {
+  const data = await fetch(`/api/restrooms`)
+
+  if(!data.ok) {
+    throw new Error('Failed to fetch data')
   }
 
-  return res.json();
+  return data.json()
 }
 
