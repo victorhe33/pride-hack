@@ -1,25 +1,20 @@
 import styles from './page.module.css'
-// import fetch from 'node-fetch';
+import { getDefaultRestrooms } from './api/restrooms/route';
 
+// async function getDefaultRestrooms() {
+//   const data = await fetch(`${endpoint}/restrooms`)
 
-// Victor Test Api Endpoint Call
-async function getData() {
-  const res = await fetch('http://localhost:3000/api/')
-  // The return value is *not* serialized
-  // You can return Date, Map, Set, etc.
+//   if (!data.ok) {
+//     throw new Error('Failed to fetch data')
+//   }
 
-  // Recommendation: handle errors
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data')
-  }
-
-  return res.json()
-}
+//   return data.json()
+// }
 
 export default async function Home() {
-  const data = await getData();
-  console.log(data);
+  const defaultRestroomData = await getDefaultRestrooms();
+  console.log(defaultRestroomData);
+
   return (
     <main className={styles.main}>
       <h1>Pride Hack</h1>
@@ -27,3 +22,16 @@ export default async function Home() {
     </main>
   )
 }
+
+// async function getDefaultRestroomData({ query }) {
+//   const res = await fetch('https://www.refugerestrooms.org/api/v1/restrooms?page=1&per_page=10&offset=0', {
+//     headers: {
+//       'Content-Type' : 'application/json'
+//     }
+//   })
+
+//   if(!res.ok) {
+//     throw new Error('Failed to fetch data')
+//   }
+//   return res.json();
+// }
