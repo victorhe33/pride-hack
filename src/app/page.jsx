@@ -1,18 +1,11 @@
 import styles from './page.module.css'
 import { getDefaultRestrooms } from './api/restrooms/route';
-
-// async function getDefaultRestrooms() {
-//   const data = await fetch(`${endpoint}/restrooms`)
-
-//   if (!data.ok) {
-//     throw new Error('Failed to fetch data')
-//   }
-
-//   return data.json()
-// }
+import { getRestroomsByDate } from './api/restrooms/by_date/route';
+import { getRestroomsByLocation } from './api/restrooms/by_location/route';
+import { getRestroomsBySearch } from './api/restrooms/search/route';
 
 export default async function Home() {
-  const defaultRestroomData = await getDefaultRestrooms();
+  const defaultRestroomData = await getRestroomsByLocation();
   console.log(defaultRestroomData);
 
   return (
