@@ -18,7 +18,6 @@ export async function GET (
   const BASE_URL=`https://www.refugerestrooms.org/api/v1/restrooms`;
   let apiUrl = BASE_URL + `/by_location?page=${pageNum}&per_page=10&offset=0&lat=${lat}&lng=${lng}`;
 
-  //'https://www.refugerestrooms.org/api/v1/restrooms/by_location?page=1&per_page=10&offset=0&lat=32.715736&lng=-117.161087'
   const res = await fetch(apiUrl, {
     headers: {
       'Content-Type' : 'application/json'
