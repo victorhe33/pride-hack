@@ -6,8 +6,6 @@ export async function GET (
     params: { pageNum: number}
   }
 ) {
-  // const pageNum = await params.pageNum;
-  //console.log("hello",pageNum)
   const res = await fetch(`https://www.refugerestrooms.org/api/v1/restrooms?page=${params.pageNum}&per_page=10&offset=0`, {
     headers: {
       'Content-Type' : 'application/json'

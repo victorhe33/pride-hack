@@ -26,16 +26,19 @@ async function getDefaultRestrooms(pageNum) {
   return res.json()
 }
 
-async function getRestroomsByDate() {
-  const res = await fetch(API_URL + '/api/restrooms/by_date')
+async function getRestroomsByDate(year, month, day, pageNum, filterForADA=undefined, filterForUnisex=undefined, filterForUpdated=undefined) {
+  //pageNum
+  //booleans: ada, unisex, from when updated
+  //required: day, month, year
+  const res = await fetch(API_URL + '/api/restrooms/by_date' + `/${year}/${month}/${day}/${pageNum}/${filterForADA}/${filterForUnisex}/${filterForUpdated}`)
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
   return res.json()
 }
 
-async function getRestroomsByLocation() {
-  const res = await fetch(API_URL + '/api/restrooms/by_location')
+async function getRestroomsByLocation(lat, lng, pageNum, filterForADA=undefined, filterForUnisex=undefined, filterForUpdated=undefined) {
+  const res = await fetch(API_URL + '/api/restrooms/by_location' + `/${lat}/${lng}/${pageNum}/${filterForADA}/${filterForUnisex}/${filterForUpdate}`)
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
