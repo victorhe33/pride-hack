@@ -7,8 +7,8 @@ import styles from './page.module.css'
 const API_URL= process.env.API_URL;
 
 export default async function Home() {
-  const restroomsByLocation = await getRestroomsByLocation();
-  console.log(restroomsByLocation);
+  //const restroomsByLocation = await getRestroomsByLocation();
+  //console.log(restroomsByLocation);
 
   return (
     <main className={styles.main}>
@@ -18,8 +18,8 @@ export default async function Home() {
   )
 }
 
-async function getDefaultRestrooms() {
-  const res = await fetch(API_URL + '/api/restrooms')
+async function getDefaultRestrooms(pageNum) {
+  const res = await fetch(API_URL + `/api/restrooms/${pageNum}`)
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
