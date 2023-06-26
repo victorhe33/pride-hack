@@ -10,7 +10,7 @@ export async function GET (
       day: number,
       month: number,
       year: number,
-      optionalFilters?: (boolean | undefined)[]
+      optionalFilters?: (boolean | string)[]
     } 
   }
 ) {
@@ -19,26 +19,11 @@ export async function GET (
   const BASE_URL=`https://www.refugerestrooms.org/api/v1/restrooms/`;
   let apiUrl = BASE_URL + `by_date?page=${pageNum}&per_page=10&offset=0&day=${day}&month=${month}&year=${year}`;
 
-  console.log("params", params)
-
   if ('optionalFilters' in params) {
-    console.log("exist");
+    //The elements of optionalFilters controls whether the restroom data required the following: ADA Accessibility, unisex, or updated since given date.
+    const optionalFilters = params.optionalFilters;
+    apiUrl = apiUrl + ((optionalFilters[0] != undefined) ? `&ada=${optionalFilters[0]}` : "") + ((optionalFilters[1] != "undefined") ? `&unisex=${optionalFilters[1]}` : "") + ((optionalFilters[2] != undefined) ? `&updated=${optionalFilters[2]}` : "")
   }
-
-  if (params?.optionalFilters) {
-    console.log("exist2")
-  }
-
-  //filterOptions is for the optional filters for unisex, accessible restrooms, or restrooms updated since the submited date. All of them are boolean if they exist.
-  //EX:ada=true&unisex=false&updated=true
-
-  //Trying to add the optional filters to the apiUrl if they exist
-  //not sure how to multiple handle optional params in the route handler
-  // if(typeof params.optionalFilters !== null){
-  //   // console.log(`ada=${optionalFilters[0]}`)
-  //   // apiUrl = apiUrl + `&ada=${optionalFilters[0]}`
-  //   console.log("activated")
-  // }
 
   const res = await fetch(apiUrl, {
     headers: {
