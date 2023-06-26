@@ -19,6 +19,16 @@ export async function GET (
   const BASE_URL=`https://www.refugerestrooms.org/api/v1/restrooms/`;
   let apiUrl = BASE_URL + `by_date?page=${pageNum}&per_page=10&offset=0&day=${day}&month=${month}&year=${year}`;
 
+  console.log("params", params)
+
+  if ('optionalFilters' in params) {
+    console.log("exist");
+  }
+
+  if (params?.optionalFilters) {
+    console.log("exist2")
+  }
+
   //filterOptions is for the optional filters for unisex, accessible restrooms, or restrooms updated since the submited date. All of them are boolean if they exist.
   //EX:ada=true&unisex=false&updated=true
 

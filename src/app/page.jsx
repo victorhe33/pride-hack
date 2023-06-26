@@ -5,7 +5,8 @@ export default async function Home() {
   //Testing API
   //const restroomsByLocation = await getRestroomsByLocation();
   //console.log(restroomsByLocation);
-
+const restrooms = await  getRestroomsByDate(2020,1,1,1,undefined,true)
+    console.log("restroom", restrooms)
   return (
     <main className={styles.main}>
       <h1>Pride Hack</h1>
@@ -22,7 +23,7 @@ async function getDefaultRestrooms(pageNum) {
   return res.json()
 }
 
-async function getRestroomsByDate(year, month, day, pageNum, filterForADA=udefined, filterForUnisex=undefined, filterForUpdated=undefined) {
+async function getRestroomsByDate(year, month, day, pageNum, filterForADA=undefined, filterForUnisex=undefined, filterForUpdated=undefined) {
   const res = await fetch(API_URL + '/api/restrooms/by_date' + `/${year}/${month}/${day}/${pageNum}/${filterForADA}/${filterForUnisex}/${filterForUpdated}`)
   if (!res.ok) {
     throw new Error('Failed to fetch data')
