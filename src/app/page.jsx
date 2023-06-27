@@ -1,11 +1,19 @@
 import styles from './page.module.css'
 const API_URL= process.env.API_URL;
+import Tarik from './map/page'
 
 export default async function Home() {
+  const hardcode = { lat: 40.70236538915158, lng: -73.91758267534527 }
+  const restrooms = await getRestroomsByLocation(40.70236538915158, -73.91758267534527, 1 )
+  console.log('restrooms fetch', restrooms)
+
+
+
   return (
     <main className={styles.main}>
       <h1>Pride Hack</h1>
       <button> button </button>
+      <Tarik/>
     </main>
   )
 }

@@ -3,7 +3,7 @@
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api"
 import { useMemo } from 'react'
 
-export default function Home() {
+export default function Tarik() {
   const { isLoaded } = useLoadScript({ googleMapsApiKey: String(process.env.NEXT_PUBLIC_GOOGLE_MAP_SECRET_KEY) });
 
 
