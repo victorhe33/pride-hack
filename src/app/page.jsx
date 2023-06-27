@@ -5,7 +5,7 @@ import Tarik from './map/page'
 export default async function Home() {
   const hardcode = { lat: 40.70236538915158, lng: -73.91758267534527 }
   const restrooms = await getRestroomsByLocation(40.70236538915158, -73.91758267534527, 1 )
-  console.log('restrooms fetch', restrooms)
+  // console.log('restrooms fetch', restrooms)
 
 
 
@@ -13,7 +13,7 @@ export default async function Home() {
     <main className={styles.main}>
       <h1>Pride Hack</h1>
       <button> button </button>
-      <Tarik/>
+      <Tarik restrooms={restrooms}/>
     </main>
   )
 }

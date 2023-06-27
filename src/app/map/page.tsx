@@ -2,23 +2,18 @@
 // import styles from '../page.module.css'
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api"
 import { useMemo } from 'react'
+import  Map from './map'
 
-export default function Tarik() {
+export default function Tarik(props:any) {
   const { isLoaded } = useLoadScript({ googleMapsApiKey: String(process.env.NEXT_PUBLIC_GOOGLE_MAP_SECRET_KEY) });
+  const { restrooms } = props;
+  // console.log('Tarik', restrooms)
 
+  // for (let i = 0; i < restrooms.length; i++) {
+  //   const marker = new google.maps.Marker({restrooms[i].lat, restrooms[i].lng)
+  // }
 
   if (!isLoaded) return <div>LOADING...</div>
-  return <Map />
+  return <Map restrooms={restrooms.data}/>
 }
 
-function Map() {
-  const center = useMemo(() => ({ lat: 40.70236538915158, lng: -73.91758267534527 }), [])
-
-  return (
-    <GoogleMap
-      zoom={10}
-      center={center}
-      mapContainerClassName="map-container">
-      <Marker position={center} />
-    </GoogleMap>)
-}
