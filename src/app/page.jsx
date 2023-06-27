@@ -1,10 +1,9 @@
 import styles from './page.module.css'
 import DataList from './components/DataList';
-
 const API_URL= process.env.API_URL;
-  //Hardcoded fetchData to test DataList component
-  //fetch API works but it is not connected to DataList component yet
-const fetchData = [
+//Hard code sampleData
+//API works but problem with connecting to DataList
+const sampleData = [
   {
       "id": 66373,
       "name": "eyedrum",
@@ -221,7 +220,7 @@ export default async function Home() {
   return (
     <main className={styles.main}>
       <h1>Pride Hack</h1>
-      <DataList dataList={fetchData}/>
+      <DataList dataList={sampleData}></DataList>
       <button> button </button>
     </main>
   )
@@ -251,6 +250,7 @@ async function getRestroomsByLocation(lat, lng, pageNum, filterForADA=undefined,
   return res.json()
 }
 
+//getRestroomsBySearch endpoint under construction. Hardcoded path for testing, no parameters yet.
 async function getRestroomsBySearch(searchQuery, pageNum, filterForADA=undefined, filterForUnisex=undefined) {
   const res = await fetch(API_URL + '/api/restrooms/search' + `/${searchQuery}/${pageNum}/${filterForADA}/${filterForUnisex}`);
   if (!res.ok) {
