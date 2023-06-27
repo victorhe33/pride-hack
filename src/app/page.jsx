@@ -34,7 +34,6 @@ async function getRestroomsByLocation(lat, lng, pageNum, filterForADA=undefined,
   return res.json()
 }
 
-//getRestroomsBySearch endpoint under construction. Hardcoded path for testing, no parameters yet.
 async function getRestroomsBySearch(searchQuery, pageNum, filterForADA=undefined, filterForUnisex=undefined) {
   const res = await fetch(API_URL + '/api/restrooms/search' + `/${searchQuery}/${pageNum}/${filterForADA}/${filterForUnisex}`);
   if (!res.ok) {

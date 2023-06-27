@@ -105,3 +105,8 @@ a {
     color-scheme: dark;
   }
 }
+
+.map-container {
+  height: 1000px;
+  width: 1000px;
+}
